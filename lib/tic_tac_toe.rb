@@ -81,6 +81,7 @@ class TicTacToe
       return true
     else
       return false
+    end
   end
   
   def over?
@@ -100,6 +101,5 @@ class TicTacToe
       else
         puts "Draw"
       end
-    end
   end
 end
