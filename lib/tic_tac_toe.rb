@@ -60,13 +60,46 @@ class TicTacToe
     end
   end
   
-  def won?(board)
+  def won?
     WIN_COMBINATIONS.any? { |indexs|
-      if position_taken?(indexs[0]) && @board[0] == @board[1] && @board[0] == @board[2]
-        return indexs
-      else
-        return false
+      if position_taken?(indexs[0]) && @board[indexs[0]] == @board[indexs[1]] && @board[indexs[1]] == @board[indexs[2]]
+        return indexs.to_ary
       end
     }
+  end
+  
+  def full?
+    if @board.any?{ |indexs| indexs == " "}
+      return false
+    else
+      return true 
+    end
+  end
+  
+  def draw?
+    if full? && !won?
+      return true
+    else
+      return false
+  end
+  
+  def over?
+    won? || draw?
+  end
+  
+  def winner?
+    if winner = won?
+      return @board[winner[0]]
+    end
+  end
+  
+  def play 
+    turn while !over?
+      if won?
+        puts "Congratulations #{winner?}!"
+      else
+        puts "Draw"
+      end
+    end
   end
 end
