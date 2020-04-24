@@ -94,12 +94,12 @@ class TicTacToe
     end
   end
   
-  def play 
-    turn while !over?
-      if won?
-        puts "Congratulations #{winner?}!"
-      else
-        puts "Draw"
-      end
+  def play
+    turn until over?
+    if winner ? 
+    	puts "Congratulations #{winner}!" 
+    else
+    	puts "Cat's Game!"
+    end
   end
 end
