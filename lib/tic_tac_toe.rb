@@ -60,7 +60,13 @@ class TicTacToe
     end
   end
   
-  def won?
-    
+  def won?(board)
+    WIN_COMBINATIONS.any? { |indexs|
+      if position_taken?(indexs[0]) && @board[0] == @board[1] && @board[0] == @board[2]
+        return indexs
+      else
+        return false
+      end
+    }
   end
 end
